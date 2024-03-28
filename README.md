@@ -1,11 +1,12 @@
 # Assignment 4
 
 ## Problem Statement
-Design 2 Python classes -
-1. URLClass to represent the schema for the Assignment 2(Part 1) CFA webpages (224 pages). Each webpage needs to adhere to guidelines you define as a part of the URLClass
-2. Two PDFClasses to represent the schema for the Grobid output.
-MetaDataPDFClass : Stores metadata for the three PDF files
-ContentPDFClass: Stores the extracted content from each PDF file
+1. **Designing Data Pipeline**: Develop a robust data pipeline architecture using Airflow to automate the extraction, transformation, and loading (ETL) process, ensuring efficient data flow and orchestration.
+
+2. **Automated ETL with Airflow**: Implement automated workflows in Airflow to schedule and execute tasks for fetching data from various sources, processing it using Grobid for PDF to XML conversion, validating and parsing the content, and finally loading it into Snowflake data warehouse.
+
+3. **Containerization for Deployment**: Utilize Docker to containerize the data pipeline application, enabling seamless deployment across different environments while ensuring consistency, scalability, and ease of management.
+
 
 Do data and schema validation using these objects using Pydantic 2 and create “clean” csv files.
 Build test cases using Pytest for each of the three classes.
