@@ -17,12 +17,24 @@ https://docs.google.com/document/d/1c6VB_qFBEqGw-6wcCtZOCc7Rcjyu1rTKkr46DdrcOcI/
 
 ## Project Goals
 
-1. Build data models and field validators for URLClass, ContentClass and MetadataClass using Pydantic
-2. Add test cases using pytest to test all validation clauses with pytest
-3. Add a xml parser to extract and build content and meta data
-4. Write all pydantic object data into respective csv files as clean data
-5. Upload data from the clean csv into snowflake databases using sqlalchemy 
-6. Run dbt data transformation workflows on these databases to generate summary table
+
+Project Goals:
+
+1.Streamlit App for File Upload: Develop a Streamlit web application to allow users to upload files easily. The application should have a user-friendly interface for selecting and uploading files.
+
+2.FastAPI for S3 Upload: Implement a FastAPI endpoint to receive the uploaded file from the Streamlit app. Upon receiving the file, the endpoint should upload it to an S3 bucket. Ensure proper error handling and authentication mechanisms are in place.
+
+3.Trigger Airflow Workflow: Integrate the FastAPI endpoint with Airflow to trigger a workflow upon successful file upload. This workflow will automate the subsequent processing steps.
+
+Airflow Workflow Components:
+
+a. Fetch PDF from S3: Create an Airflow task to fetch the uploaded PDF file from the S3 bucket.
+b. Process PDF with Grobid: Utilize Grobid to process the PDF file and convert it into XML format. This step involves extracting structured data from the PDF document.
+c. Parse XML and Validate Data: Develop a task to parse the XML content, validate the extracted data using Pydantic models, and store the validated data as CSV files. Ensure data integrity and handle any validation errors gracefully.
+d. Upload CSV to Snowflake: Implement tasks to upload the CSV files containing validated data to Snowflake, a cloud data warehouse.
+e. Extract Metadata from PDF: Extract metadata from the PDF file, such as author, title, creation date, etc. Validate and store this metadata as another CSV file.
+f. Upload Metadata CSV to Snowflake: Similar to step d, upload the metadata CSV file to Snowflake for further analysis and storage.
+4.FastAPI for Data Display: Develop additional FastAPI endpoints to query the data stored in Snowflake. These endpoints will retrieve data from Snowflake and serve it to the Streamlit app for display. Ensure proper authentication and authorization mechanisms are implemented to protect sensitive data.
 
 ## Data Sources
 
