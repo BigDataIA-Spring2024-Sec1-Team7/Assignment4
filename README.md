@@ -1,16 +1,14 @@
 # Assignment 4
 
 ## Problem Statement
-1. **Designing Data Pipeline**: Develop a robust data pipeline architecture using Airflow to automate the extraction, transformation, and loading (ETL) process, ensuring efficient data flow and orchestration.
 
-2. **Automated ETL with Airflow**: Implement automated workflows in Airflow to schedule and execute tasks for fetching data from various sources, processing it using Grobid for PDF to XML conversion, validating and parsing the content, and finally loading it into Snowflake data warehouse.
+1. **Designing Data Pipeline with FastAPI and Airflow**: Develop a robust data pipeline architecture using FastAPI for file upload and Airflow for automated ETL processes. This pipeline will automate the extraction, transformation, and loading (ETL) of data, ensuring efficient data flow and orchestration.
 
-3. **Containerization for Deployment**: Utilize Docker to containerize the data pipeline application, enabling seamless deployment across different environments while ensuring consistency, scalability, and ease of management.
+2. **Automated ETL with Airflow**: Implement automated workflows in Airflow to schedule and execute tasks for fetching data from various sources, including files uploaded via FastAPI, processing it using Grobid for PDF to XML conversion, validating and parsing the content, and finally loading it into Snowflake data warehouse.
+
+3. **Containerization for Deployment**: Utilize Docker to containerize the data pipeline application, incorporating both FastAPI and Airflow components. This approach enables seamless deployment across different environments while ensuring consistency, scalability, and ease of management.
 
 
-Do data and schema validation using these objects using Pydantic 2 and create “clean” csv files.
-Build test cases using Pytest for each of the three classes.
-Run transformation workflows using DBT to generate a summary table
 
 ## Codelab Link
 https://docs.google.com/document/d/1c6VB_qFBEqGw-6wcCtZOCc7Rcjyu1rTKkr46DdrcOcI/edit?usp=sharing
@@ -43,8 +41,8 @@ f. Upload Metadata CSV to Snowflake: Similar to step d, upload the metadata CSV 
 
 ## Data Sources
 
-- 224 Refresher readings listed on the https://www.cfainstitute.org/en/membership/professional-development/refresher-readings#sort=%40refreadingcurriculumyear%20descending
-- The topic outlines (3 pdf's)
+Input PDFs Uploaded via Streamlit: The pipeline retrieves PDF files containing topic outlines, which are uploaded via a Streamlit web application. Users can upload PDF files directly through the Streamlit interface, providing seamless integration with the pipeline. The pipeline is specifically designed to handle PDFs sourced from the CFA Institute website.
+
 
 ## Technologies used
 Airflow, Docker, FastAPI, SQLAlchemy, GROBID, Snowflake, Pydantic, Pytest, etree, 
