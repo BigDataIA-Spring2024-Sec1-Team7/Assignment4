@@ -6,7 +6,7 @@ from datetime import date
 import csv
 import json
 import numpy as np
-from metadataclass import MetaDataClass
+from tasks.metadata_class import MetaDataClass
 
 def get_pdf_metadata(content):
     """Extracts metadata from one or more PDF files."""
@@ -25,7 +25,7 @@ def get_pdf_metadata(content):
 
                 # Extract metadata:
                 metadata = {
-                    "level": level ,
+                    "level": level,
                     "file_size_bytes": os.path.getsize(pdf_path),
                     "num_pages": len(pdf_reader.pages),
                     "s3_pypdf_text_link": pypdf_link,
@@ -33,7 +33,6 @@ def get_pdf_metadata(content):
                     "file_path": pdf_path,
                     "encryption": "Yes" if pdf_reader.is_encrypted else "No",
                     "date_updated": date.today().strftime("%m/%d/%Y")
-                   
                 }
                 all_metadata.append(metadata)
 
@@ -84,16 +83,3 @@ if validate_record_count == df.shape[0]:
     write_to_csv(metadatainstance_list)
 else:
     print("Validation failed in some records. Please fix and retry")
-
-
-
-
-
-
-
-
-
-
-
-
-

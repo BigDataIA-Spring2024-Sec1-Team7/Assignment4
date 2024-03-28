@@ -50,10 +50,3 @@ class MetaDataClass(BaseModel):
         if v and re.search(r"Level\s+(I|II|III)\b", v) == None:
             raise ValueError('level is not valid')
         return v
-
-    # @field_validator('s3_pypdf_text_link', 's3_grobid_text_link')
-    # @classmethod
-    # def link_is_valid(cls, v: str, info: ValidationInfo) -> str:
-    #     if v and (not validators.url(v)):
-    #         raise ValueError(f'{info.field_name} is not a valid url')
-    #     return v

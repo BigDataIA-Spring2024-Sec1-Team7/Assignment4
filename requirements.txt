@@ -1,6 +1,4 @@
 requests
-apache-airflow==2.7.2
-logging
 python-dotenv
 snowflake-sqlalchemy
 SQLAlchemy
@@ -15,6 +13,5 @@ validators
 pydantic 
 pytest
 elementpath
-PyPDF2
 streamlit
 matplotlib
