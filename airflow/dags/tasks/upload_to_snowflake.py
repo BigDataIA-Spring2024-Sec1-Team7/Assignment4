@@ -11,8 +11,8 @@ load_dotenv()
 TABLE_NAME_WEB_SCRAPED = 'web_scraped_data'
 TABLE_NAME_CONTENT_DATA = 'content_data'
 TABLE_NAME_META_DATA = 'content_meta_data'
-DATABASE_NAME = 'cfa_dev'
-WAREHOUSE_NAME = 'cfa_wh_dev'
+DATABASE_NAME = 'cfa_prod'
+WAREHOUSE_NAME = 'compute_wh'
 
 
 base_url = URL.create(

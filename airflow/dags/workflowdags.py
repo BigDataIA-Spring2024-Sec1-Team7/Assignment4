@@ -13,7 +13,7 @@ with DAG(
     dag_id='cfa_pipe',
     default_args={'start_date': days_ago(1),
     'execution_timeout': timedelta(minutes=30)},
-    schedule_interval='0 23 * * *',
+    schedule_interval=None,
     catchup=False
 ) as dag:
 
