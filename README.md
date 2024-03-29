@@ -1,15 +1,14 @@
 # Assignment 4
 
 ## Problem Statement
-Design 2 Python classes -
-1. URLClass to represent the schema for the Assignment 2(Part 1) CFA webpages (224 pages). Each webpage needs to adhere to guidelines you define as a part of the URLClass
-2. Two PDFClasses to represent the schema for the Grobid output.
-MetaDataPDFClass : Stores metadata for the three PDF files
-ContentPDFClass: Stores the extracted content from each PDF file
 
-Do data and schema validation using these objects using Pydantic 2 and create “clean” csv files.
-Build test cases using Pytest for each of the three classes.
-Run transformation workflows using DBT to generate a summary table
+1. **Designing Data Pipeline with FastAPI and Airflow**: Develop a robust data pipeline architecture using FastAPI for file upload and Airflow for automated ETL processes. This pipeline will automate the extraction, transformation, and loading (ETL) of data, ensuring efficient data flow and orchestration.
+
+2. **Automated ETL with Airflow**: Implement automated workflows in Airflow to schedule and execute tasks for fetching data from various sources, including files uploaded via FastAPI, processing it using Grobid for PDF to XML conversion, validating and parsing the content, and finally loading it into Snowflake data warehouse.
+
+3. **Containerization for Deployment**: Utilize Docker to containerize the data pipeline application, incorporating both FastAPI and Airflow components. This approach enables seamless deployment across different environments while ensuring consistency, scalability, and ease of management.
+
+
 
 ## Codelab Link
 https://docs.google.com/document/d/1c6VB_qFBEqGw-6wcCtZOCc7Rcjyu1rTKkr46DdrcOcI/edit?usp=sharing
@@ -17,17 +16,33 @@ https://docs.google.com/document/d/1c6VB_qFBEqGw-6wcCtZOCc7Rcjyu1rTKkr46DdrcOcI/
 
 ## Project Goals
 
-1. Build data models and field validators for URLClass, ContentClass and MetadataClass using Pydantic
-2. Add test cases using pytest to test all validation clauses with pytest
-3. Add a xml parser to extract and build content and meta data
-4. Write all pydantic object data into respective csv files as clean data
-5. Upload data from the clean csv into snowflake databases using sqlalchemy 
-6. Run dbt data transformation workflows on these databases to generate summary table
+
+1.Streamlit App for File Upload: Develop a Streamlit web application to allow users to upload files easily. The application should have a user-friendly interface for selecting and uploading files.
+
+2.FastAPI for S3 Upload: Implement a FastAPI endpoint to receive the uploaded file from the Streamlit app. Upon receiving the file, the endpoint should upload it to an S3 bucket. Ensure proper error handling and authentication mechanisms are in place.
+
+3.Trigger Airflow Workflow: Integrate the FastAPI endpoint with Airflow to trigger a workflow upon successful file upload. This workflow will automate the subsequent processing steps.
+
+Airflow Workflow Components:
+
+a. Fetch PDF from S3: Create an Airflow task to fetch the uploaded PDF file from the S3 bucket.
+
+b. Process PDF with Grobid: Utilize Grobid to process the PDF file and convert it into XML format. This step involves extracting structured data from the PDF document.
+
+c. Parse XML and Validate Data: Develop a task to parse the XML content, validate the extracted data using Pydantic models, and store the validated data as CSV files. Ensure data integrity and handle any validation errors gracefully.
+
+d. Upload CSV to Snowflake: Implement tasks to upload the CSV files containing validated data to Snowflake, a cloud data warehouse.
+
+e. Extract Metadata from PDF: Extract metadata from the PDF file, such as author, title, creation date, etc. Validate and store this metadata as another CSV file.
+
+f. Upload Metadata CSV to Snowflake: Similar to step d, upload the metadata CSV file to Snowflake for further analysis and storage.
+
+4.FastAPI for Data Display: Develop additional FastAPI endpoints to query the data stored in Snowflake. These endpoints will retrieve data from Snowflake and serve it to the Streamlit app for display. Ensure proper authentication and authorization mechanisms are implemented to protect sensitive data.
 
 ## Data Sources
 
-- 224 Refresher readings listed on the https://www.cfainstitute.org/en/membership/professional-development/refresher-readings#sort=%40refreadingcurriculumyear%20descending
-- The topic outlines (3 pdf's)
+Input PDFs Uploaded via Streamlit: The pipeline retrieves PDF files containing topic outlines, which are uploaded via a Streamlit web application. Users can upload PDF files directly through the Streamlit interface, providing seamless integration with the pipeline. The pipeline is specifically designed to handle PDFs sourced from the CFA Institute website.
+
 
 ## Technologies used
 Airflow, Docker, FastAPI, SQLAlchemy, GROBID, Snowflake, Pydantic, Pytest, etree, 

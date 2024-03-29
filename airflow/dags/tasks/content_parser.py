@@ -7,6 +7,7 @@ import json
 import re
 import logging 
 import os
+import constants
 
 logging.basicConfig(
     level=logging.INFO,
@@ -73,13 +74,6 @@ def _parse_xml_file(file_path):
     except Exception as e:
         logging.info("Exception Occurred:", e)
 
-def _find_xml_files(folder_path):
-    xml_files = []
-    for root, dirs, files in os.walk(folder_path):
-        for file in files:
-            if file.endswith('.xml'):
-                xml_files.append(os.path.join(root, file))
-    return xml_files
 
 def _write_to_csv(obj_list, folder_path):
     fieldnames = list(ContentClass.schema()["properties"].keys())
@@ -117,10 +111,10 @@ def _begin_process_for(file_path, folder_path):
 
 # Entry point of task
 def parse_to_csv(**kwargs):
-    print("Starting xml parsing")
+    print("Starting content data parsing")
     ti = kwargs['ti']
-    folder_path = ti.xcom_pull(key='temp_folder_path', task_ids='download_from_s3')
-
-    for file_path in _find_xml_files(folder_path):
-        _begin_process_for(file_path, folder_path)
+    folder_path = ti.xcom_pull(key=constants.XKEY_TEMP_FOLDER_PATH, task_ids=constants.TASK_SETUP_ID)
+    xml_file_path = ti.xcom_pull(key=constants.XKEY_TEMP_XML_FILE_PATH, task_ids=constants.TASK_GROBID_PROCESS_ID)
+    
+    _begin_process_for(xml_file_path, folder_path)
     
