@@ -48,7 +48,8 @@ Input PDFs Uploaded via Streamlit: The pipeline retrieves PDF files containing t
 Airflow, Docker, FastAPI, SQLAlchemy, GROBID, Snowflake, Pydantic, Pytest, etree, 
 
 ## Architecture Diagram
-<img width="1261" alt="image" src="https://github.com/BigDataIA-Spring2024-Sec1-Team7/Assignment3/assets/25281293/846c7dc7-2ea0-4260-9f77-7a04d0b80608">
+![data_pipeline_architecture](https://github.com/BigDataIA-Spring2024-Sec1-Team7/Assignment4/assets/114360071/9028c1c3-a01e-419e-a4f3-e58fa36778ce)
+
 
 ## Pre-requisites
 
