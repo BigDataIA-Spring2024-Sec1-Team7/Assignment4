@@ -171,6 +171,8 @@ services:
       <<: *airflow-common-depends-on
       airflow-init:
         condition: service_completed_successfully
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
 
   airflow-triggerer:
     <<: *airflow-common
@@ -290,12 +292,14 @@ services:
     image: lfoppiano/grobid:0.8.0
     ports:
       - "8070:8070"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
 
 
   frontend:  
     build:
       context: .
-      dockerfile: ./dockerFiles/frontend.Dockerfile
+      dockerfile: ./dockerfiles/frontend.Dockerfile
     ports:
       - "8501:8501"
     environment:
@@ -308,12 +312,14 @@ services:
       SNOWFLAKE_USERNAME: ${SNOWFLAKE_USERNAME}
       SNOWFLAKE_PASSWORD: ${SNOWFLAKE_PASSWORD}
       SNOWFLAKE_ACCOUNT: ${SNOWFLAKE_ACCOUNT}
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     
 
   backend:  
     build:
       context: .
-      dockerfile: ./dockerFiles/backend.Dockerfile
+      dockerfile: ./dockerfiles/backend.Dockerfile
     ports:
       - "8080:80"
     environment:
@@ -329,8 +335,7 @@ services:
       SNOWFLAKE_DATABASE: ${SNOWFLAKE_DATABASE}
       SNOWFLAKE_WAREHOUSE: ${SNOWFLAKE_WAREHOUSE}
       SNOWFLAKE_SCHEMA: ${SNOWFLAKE_SCHEMA}
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
 volumes:
   postgres-db-volume:
-
-
-
