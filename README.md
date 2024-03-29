@@ -11,7 +11,7 @@
 
 
 ## Codelab Link
-https://docs.google.com/document/d/1c6VB_qFBEqGw-6wcCtZOCc7Rcjyu1rTKkr46DdrcOcI/edit?usp=sharing
+https://codelabs-preview.appspot.com/?file_id=1c6VB_qFBEqGw-6wcCtZOCc7Rcjyu1rTKkr46DdrcOcI#0
 
 
 ## Project Goals
@@ -48,7 +48,7 @@ Input PDFs Uploaded via Streamlit: The pipeline retrieves PDF files containing t
 Airflow, Docker, FastAPI, SQLAlchemy, GROBID, Snowflake, Pydantic, Pytest, etree, 
 
 ## Architecture Diagram
-![data_pipeline_architecture](https://github.com/BigDataIA-Spring2024-Sec1-Team7/Assignment4/assets/114360071/9028c1c3-a01e-419e-a4f3-e58fa36778ce)
+![data_pipeline_architecture](https://github.com/BigDataIA-Spring2024-Sec1-Team7/Assignment4/assets/113384021/67b9bc0e-117c-442e-bde9-a5e40b4ac741)
 
 
 ## Pre-requisites
