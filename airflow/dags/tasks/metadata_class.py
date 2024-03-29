@@ -11,11 +11,10 @@ import datetime as dt
 
 
 class MetaDataClass(BaseModel):
-    level: str | None
     file_size_bytes: int
     num_pages: int
     s3_pypdf_text_link: str | None
-    s3_grobid_text_link:str | None
+    s3_grobid_xml_link:str | None
     file_path: str | None
     encryption: str | None
     date_updated: str | None
@@ -37,16 +36,9 @@ class MetaDataClass(BaseModel):
         return v
 
 
-    @field_validator('level', 's3_pypdf_text_link', 's3_grobid_text_link', 'file_path', 'encryption', 'date_updated')
+    @field_validator('s3_pypdf_text_link', 's3_grobid_xml_link', 'file_path', 'encryption', 'date_updated')
     @classmethod
     def text_should_not_contain_html_or_quotes(cls, v: str, info: ValidationInfo) -> str:
         if v and re.search('[\'"‘’”“]|<.*?>', v):
             raise ValueError(f'{info.field_name} contains invalid characters like quotes or html tags')
-        return v
-    
-    @field_validator('level')
-    @classmethod
-    def level_must_match_pattern(cls, v: str) -> str:
-        if v and re.search(r"Level\s+(I|II|III)\b", v) == None:
-            raise ValueError('level is not valid')
         return v
